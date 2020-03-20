@@ -1,0 +1,294 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red117\green117\blue117;
+\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;\cssrgb\c53333\c53333\c53333;
+\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10840\viewh14580\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+-- \'97\'97\'97\'97\'97Quest\'e3o 1 e 2\'97\'97\'97\'97\'97\'97\'97\
+\
+\'97Padronizei todas as Primary Keys como sendo do tipo Integer\
+\
+CREATE TABLE automovel (\
+PK_placa varchar(20),\
+Dono varchar(20)\
+);\
+\
+-- PK_id_segurado pode ser o cpf ou cnpj do segurado\
+CREATE TABLE segurado( \
+PK_id_segurado integer,\
+nome varchar(40),\
+seguro integer\
+);\
+\
+CREATE TABLE perito( \
+PK_id_perito integer,\
+nome varchar(40) ,\
+sinistro integer\
+);\
+\
+--lugar onde o carro ser\'e1 consertado. Geralmente s\'e3o conveniadas com o seguro\
+CREATE TABLE oficina(\
+PK_id_oficina integer,\
+nome varchar(40),\
+seguro integer \
+);\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+- -Contrato\cb3 \
+CREATE TABLE seguro( \
+PK_id_seguro integer,\
+termos text,\
+pre\'e7o numeric,\
+seguradora integer,\
+segurado integer\
+);\
+\
+CREATE TABLE sinistro(\
+PK_id_sinistro integer,\
+segurado integer,\
+descricao text,\
+pericia integer\
+);\
+\
+CREATE TABLE pericia(\
+PK_id_pericia integer,\
+perito integer,\
+segurado integer, \
+avaliacao text,\
+reparo integer\
+);\
+\
+CREATE TABLE reparo(\
+PK_id_reparo integer,\
+descricao text, \
+orcamento numeric,\
+oficina integer\
+);\
+\
+\
+\
+-----EXTRAS------\
+\
+--PK_id_seguradora pode ser o cnpj da empresa\
+CREATE TABLE seguradora(\
+PK_id_seguradora integer,\
+seguro integer\
+);\
+\
+CREATE TABLE placa( \
+PK_id_placa integer,\
+\cb1 modelo varchar(20),\
+ano integer \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 );\cf4 \
+\
+\
+\
+\cf2 -- \'97\'97\'97\'97\'97Quest\'e3o 3\'97\'97\'97\'97\'97\'97\'97\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+ALTER TABLE automovel ADD PRIMARY KEY (PK_placa);\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 --
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0  Pode ser o CPF OU CNPJ do segurado \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+ALTER TABLE oficina ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_oficina
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE pericia ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_pericia
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf4 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 ALTER TABLE perito ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_perito 
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE placa ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_placa
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE reparo ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_reparo 
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE segurado ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_segurado
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE seguradora ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_seguradora 
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE seguro ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_seguro 
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+ALTER TABLE sinistro ADD PRIMARY KEY (
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 PK_id_sinistro
+\f1\fs22 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 );\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 -- \'97\'97\'97\'97\'97Quest\'e3o 4\'97\'97\'97\'97\'97\'97\'97\
+ \
+\
+\
+-- \'97\'97\'97\'97\'97Quest\'e3o 5\'97\'97\'97\'97\'97\'97\'97\
+Check\
+\
+-- \'97\'97\'97\'97\'97Quest\'e3o 6\'97\'97\'97\'97\'97\'97\'97\
+DROP TABLE automovel;\
+\
+DROP TABLE placa;\
+\
+\'97 precisei remover as seguintes constraints das tabelas antes de delet\'e1-las.\
+\
+ALTER TABLE seguro DROP CONSTRAINT fk_id_seguradora;\
+\
+ALTER TABLE seguro DROP CONSTRAINT fk_id_segurado;\
+\
+ALTER TABLE sinistro DROP CONSTRAINT fk_id_segurado;\
+\
+ALTER TABLE sinistro DROP CONSTRAINT fk_id_pericia;\
+\
+ALTER TABLE pericia DROP CONSTRAINT fk_id_perito;\
+\
+ALTER TABLE pericia DROP CONSTRAINT fk_id_segurado;\
+\
+ALTER TABLE pericia DROP CONSTRAINT fk_id_reparo;\
+\
+ALTER TABLE reparo DROP CONSTRAINT fk_id_oficina;\
+\
+ALTER TABLE seguradora DROP CONSTRAINT fk_id_seguro;\
+\
+\
+DROP TABLE oficina;\
+\
+DROP TABLE pericia;\
+\
+DROP TABLE perito;\
+\
+DROP TABLE reparo;\
+\
+DROP TABLE segurado;\
+\
+DROP TABLE seguradora;\
+\
+DROP TABLE seguro;\
+\
+DROP TABLE sinistro;\
+\
+\
+-- \'97\'97\'97\'97\'97Quest\'e3o 7 e 8\'97\'97\'97\'97\'97\'97\'97\
+\
+-- Quest\'e3o 1\
+CREATE TABLE automovel (\
+PK_placa varchar(20) REFERENCES placa PRIMARY KEY,\
+FK_dono REFERENCES segurado(PK_id_segurado)\
+);\
+\
+-- PK_id_segurado pode ser o cpf ou cnpj do segurado\
+CREATE TABLE segurado( \
+PK_id_segurado integer PRIMARY KEY,\
+nome varchar(40) NOT NULL\
+FK_id_seguro integer REFERENCES seguro(PK_id_seguro) NOT NULL\
+);\
+\
+CREATE TABLE perito( \
+PK_id_perito integer PRIMARY KEY,\
+nome varchar(40) NOT NULL,\
+FK_sinistro integer REFERENCES sinistro\
+);\
+\
+--lugar onde o carro ser\'e1 consertado. Geralmente s\'e3o conveniadas com o seguro\
+CREATE TABLE oficina(\
+PK_id_oficina integer PRIMARY KEY,\
+nome varchar(40),\
+FK_seguro integer REFERENCES seguro\
+);\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+- -Contrato\cb3 \
+CREATE TABLE seguro( \
+PK_id_seguro integer PRIMARY KEY,\
+termos text text NOT NULL,\
+pre\'e7o numeric NOT NULL,\
+FK_seguradora integer REFERENCES seguradora NOT NULL,\
+FK_segurado integer REFERENCES segurado NOT NULL\
+);\
+\
+CREATE TABLE sinistro(\
+PK_id_sinistro integer PRIMARY KEY,\
+FK_segurado integer REFERENCES segurado NOT NULL,\
+descricao text NOT NULL\
+FK_pericia integer REFERENCES pericia\
+);\
+\
+CREATE TABLE pericia(\
+PK_id_pericia integer PRIMARY KEY,\
+FK_perito integer REFERENCES perito NOT NULL,\
+FK_segurado REFERENCES segurado, \
+avaliacao text NOT NULL,\
+FK_reparo integer REFERENCES reparo\
+);\
+\
+CREATE TABLE reparo(\
+PK_id_reparo integer PRIMARY KEY,\
+descricao text NOT NULL, \
+orcamento numeric NOT NULL,\
+FK_id_oficina integer REFERENCES oficina\
+);\
+\
+\
+\
+---------EXTRAS----------\
+\
+--PK_id_seguradora pode ser o cnpj da empresa\
+CREATE TABLE seguradora(\
+PK_id_seguradora integer\
+FK_seguro integer REFERENCES seguro\
+);\
+\
+CREATE TABLE placa( \
+PK_id_placa integer PRIMARY KEY,\
+\cb1 modelo varchar(20) NOT NULL,\
+ano integer NOT NULL\cb3 \
+);\cf4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\
+\
+-- \'97\'97\'97\'97\'97Quest\'e3o 9\'97\'97\'97\'97\'97\'97\'97\
+Check\
+\
+\
+-- \'97\'97\'97\'97\'97Quest\'e3o 10\'97\'97\'97\'97\'97\'97\'97\
+Criei duas tabelas extras desde o primeiro passo, visto que li todo o roteiro antes de come\'e7ar a fazer. As tabelas foram \'93placa\'94 e \'93seguradora\'94. A primeira eu criei com o objetivo de modularizar a tabela \'93automovel\'94 e a segunda eu criei porque senti necessidade dessa entidade, pois contratos de seguro acontecem com uma seguradora, e nesse esquema eu pensei na tabela \'93seguro\'94 como sendo unicamente o contrato entre o \'93segurado\'94 e a \'93seguradora\'94.\
+\
+\
+}
